@@ -11,6 +11,9 @@ This microservice is designed as an onboarding task for new recruits. It provide
 - RESTful API endpoints
 - Input validation using Zod
 - Comprehensive test suite
+- Profile picture upload support
+- Frontend-ready API with TypeScript definitions
+- Consistent error handling and response formats
 
 ## Prerequisites
 - Node.js (v16 or higher)
@@ -39,6 +42,7 @@ Edit `.env` with your configuration:
 DATABASE_URL="postgresql://user:password@localhost:5432/task_aaa0_1"
 REDIS_URL="redis://localhost:6379"
 PORT=4000
+JWT_SECRET="your-secret-key"
 ```
 
 4. Initialize the database:
@@ -77,9 +81,25 @@ npm run test:watch
 - `GET /api/users/profile` - Get user profile
 - `PUT /api/users/profile` - Update user profile
 - `DELETE /api/users/profile` - Delete user account
+- `PUT /api/users/profile/picture` - Update profile picture
+  - Accepts multipart/form-data
+  - Supported formats: JPG, PNG, GIF
+  - Max file size: 5MB
+  - Max dimensions: 1024x1024px
 
 ### Health Check
 - `GET /health` - Service health status
+
+## Frontend Integration
+For detailed frontend integration instructions, see [Frontend Integration Guide](docs/frontend_integration.md).
+
+Key features for frontend developers:
+- TypeScript definitions for all API responses
+- Consistent error handling
+- JWT-based authentication
+- File upload support
+- Rate limiting headers
+- Mock data for development
 
 ## Project Structure
 ```
@@ -97,6 +117,7 @@ src/
 3. Use ESLint and Prettier for code formatting
 4. Document API changes
 5. Follow RESTful API design principles
+6. Maintain frontend compatibility
 
 ## Contributing
 1. Create a feature branch
